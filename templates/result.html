@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CKD Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url("https://i.postimg.cc/nztLS4bt/bg2.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 50px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+        .ckd {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .no-ckd {
+            background-color: green;
+            color: white;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chronic Kidney Disease Prediction</h1>
+        {% if prediction.lower() == "ckd detected" %}
+            <p class="ckd">⚠️ Result: {{ prediction }}</p>
+            <p>⚠️ <strong>Recommendation:</strong> Consult a Nephrologist for further diagnosis.</p>
+        {% else %}
+            <p class="no-ckd">✅ Result: {{ prediction }}</p>
+            <p>✅ <strong>Recommendation:</strong> Maintain a healthy lifestyle and monitor kidney health regularly.</p>
+        {% endif %}
+        <a href="/index">🔙 Go Back</a>
+    </div>
+</body>
+</html>
