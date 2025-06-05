@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url("https://i.postimg.cc/VN0zfSPF/t.webp") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            width: 350px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        label {
+            font-size: 18px;
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+            color: #ccc;
+        }
+
+        input {
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 8px #ffcc00;
+        }
+
+        /* Blue Signup Button */
+        input[type="submit"] {
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(45deg, #0056b3, #003f7f);
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
+        }
+
+        p {
+            margin-top: 15px;
+        }
+
+        a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup</h2>
+        <form action="/signup" method="post">
+            <label>Username:</label>
+            <input type="text" name="username" required>
+
+            <label>Password:</label>
+            <input type="password" name="password" required>
+
+            <input type="submit" value="Signup">
+        </form>
+        <p>Already have an account? <a href="/login">Login here</a></p>
+    </div>
+</body>
+</html>
