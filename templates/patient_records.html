@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Records</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .container { text-align: center; }
+        .back-btn { margin-top: 20px; display: inline-block; padding: 10px; background: blue; color: white; text-decoration: none; border-radius: 5px; }
+        .filter-date { margin-top: 10px; padding: 8px; font-size: 16px; }
+        #record-count { margin-top: 10px; font-weight: bold; }
+    </style>
+    <script>
+        function filterByDate() {
+            const selectedDate = document.getElementById("date-filter").value;
+            const rows = document.querySelectorAll("table tbody tr");
+            let count = 0;
+
+            rows.forEach(row => {
+                const date = row.getAttribute("data-date");
+                if (selectedDate === "" || date === selectedDate) {
+                    row.style.display = "";
+                    count++;
+                } else {
+                    row.style.display = "none";
+                }
+            });
+
+            document.getElementById("record-count").textContent =
+                selectedDate ? `Total Records on ${selectedDate}: ${count}` : "Showing all records";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Patient Records</h2>
+
+        <label for="date-filter"><strong>Select Date:</strong></label>
+        <input type="date" id="date-filter" class="filter-date" onchange="filterByDate()">
+
+        <div id="record-count">Showing all records</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Age</th>
+                    <th>Blood Pressure</th>
+                    <th>Albumin</th>
+                    <th>Serum Creatinine</th>
+                    <th>Hemoglobin</th>
+                    <th>Blood Urea</th>
+                    <th>Sodium</th>
+                    <th>Potassium</th>
+                    <th>Specific Gravity</th>
+                    <th>Model Used</th>
+                    <th>Prediction</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+                <tr data-date="{{ patient.created_at }}">
+                    <td>{{ patient.id }}</td>
+                    <td>{{ patient.age }}</td>
+                    <td>{{ patient.blood_pressure }}</td>
+                    <td>{{ patient.albumin }}</td>
+                    <td>{{ patient.serum_creatinine }}</td>
+                    <td>{{ patient.hemoglobin }}</td>
+                    <td>{{ patient.blood_urea }}</td>
+                    <td>{{ patient.sodium }}</td>
+                    <td>{{ patient.potassium }}</td>
+                    <td>{{ patient.specific_gravity }}</td>
+                    <td>{{ patient.model_used }}</td>
+                    <td><strong>{{ patient.prediction }}</strong></td>
+                    <td>{{ patient.created_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/" class="back-btn">Back to Home</a>
+    </div>
+</body>
+</html>
